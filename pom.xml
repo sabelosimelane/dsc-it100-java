@@ -51,6 +51,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<mina.version>2.0.20</mina.version>
 		<log4j.version>2.11.2</log4j.version>
+		<resteasy.version>3.8.1.Final</resteasy.version>
 	</properties>
 
 	<dependencyManagement>
@@ -102,6 +103,17 @@
 		</dependencies>
 	</dependencyManagement>
 	<dependencies>
+		<dependency>
+	        <groupId>org.jboss.resteasy</groupId>
+	        <artifactId>resteasy-jaxrs</artifactId>
+	        <version>${resteasy.version}</version>
+	    </dependency>
+	    <dependency>
+		    <groupId>javax</groupId>
+		    <artifactId>javaee-api</artifactId>
+		    <version>8.0</version>
+		    <scope>provided</scope>
+		</dependency>
 		<dependency>
 			<groupId>com.netflix.rxjava</groupId>
 			<artifactId>rxjava-core</artifactId>
