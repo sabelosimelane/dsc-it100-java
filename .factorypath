@@ -1,0 +1,10 @@
+<factorypath>
+    <factorypathentry kind="VARJAR" id="M2_REPO/com/netflix/rxjava/rxjava-core/0.20.7/rxjava-core-0.20.7.jar" enabled="true" runInBatchMode="false"/>
+    <factorypathentry kind="VARJAR" id="M2_REPO/org/apache/mina/mina-core/2.0.20/mina-core-2.0.20.jar" enabled="true" runInBatchMode="false"/>
+    <factorypathentry kind="VARJAR" id="M2_REPO/org/slf4j/slf4j-api/1.7.26/slf4j-api-1.7.26.jar" enabled="true" runInBatchMode="false"/>
+    <factorypathentry kind="VARJAR" id="M2_REPO/org/apache/mina/mina-transport-serial/2.0.20/mina-transport-serial-2.0.20.jar" enabled="true" runInBatchMode="false"/>
+    <factorypathentry kind="VARJAR" id="M2_REPO/org/bidib/jbidib/org/qbang/rxtx/rxtxcomm/2.2/rxtxcomm-2.2.jar" enabled="true" runInBatchMode="false"/>
+    <factorypathentry kind="VARJAR" id="M2_REPO/org/apache/logging/log4j/log4j-core/2.11.2/log4j-core-2.11.2.jar" enabled="true" runInBatchMode="false"/>
+    <factorypathentry kind="VARJAR" id="M2_REPO/org/apache/logging/log4j/log4j-slf4j-impl/2.11.2/log4j-slf4j-impl-2.11.2.jar" enabled="true" runInBatchMode="false"/>
+    <factorypathentry kind="VARJAR" id="M2_REPO/org/apache/logging/log4j/log4j-api/2.11.2/log4j-api-2.11.2.jar" enabled="true" runInBatchMode="false"/>
+</factorypath>

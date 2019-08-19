@@ -23,6 +23,7 @@ public class EnvisalinkLoginInteractionCommand extends ReadCommand implements IC
 		}
 		try {
 			loginCodeValue = Integer.parseInt(dataString);
+			System.out.println("login code: "+loginCodeValue);
 		} catch (NumberFormatException e) {
 			throw new CommandDataParseException("Envisalink login code was not a valid number: " + e.getMessage(), e);
 		}
