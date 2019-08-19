@@ -8,6 +8,7 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
+import com.github.kmbulebu.dcs.rest.domain.EventType;
 import com.github.kmbulebu.dsc.it100.DSCSession;
 
 @Path("/module")
@@ -26,6 +27,16 @@ public class DSCResource {
 			e.printStackTrace();
 			return Response.serverError().build();
 		}
+		
+		return Response.ok().build();
+	}
+	
+	@POST
+	@Path("/subscribe/{event}/{uri}")
+    @Consumes({ MediaType.APPLICATION_JSON})
+	public Response subscribe(@PathParam("event") String eventType, @PathParam("uri") String uri) {
+		
+		session.subscribe(EventType.fromString(eventType), uri);
 		
 		return Response.ok().build();
 	}

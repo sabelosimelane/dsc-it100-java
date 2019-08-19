@@ -5,11 +5,19 @@ import javax.enterprise.context.ApplicationScoped;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
+import com.github.kmbulebu.dcs.rest.domain.EventType;
+import com.github.kmbulebu.dsc.it100.commands.read.ReadCommand;
+import com.github.kmbulebu.dsc.it100.commands.read.ZoneOpenCommand;
+
+import rx.Observable;
+import rx.functions.Action1;
+
 @ApplicationScoped
 public class DSCSession {
 	private final static Log log = LogFactory.getLog(DSCSession.class); 
 	
 	private IT100 instance;
+	private Observable<ReadCommand> readObservable;
 	
 	public void connect(String ipAddress) throws Exception {
 		log.info(String.format("connecting to [%s]...", ipAddress));
@@ -19,8 +27,19 @@ public class DSCSession {
 				.withEnvisalinkPassword("user").build());
 		log.info("successfully connected!");
 		instance = it100;
+		readObservable = it100.getReadObservable();
 	}
 	
+	public void subscribe(EventType eventType, String callbackURI) {
+		readObservable.ofType(ZoneOpenCommand.class).subscribe(new Action1<ZoneOpenCommand>() {
+
+			@Override
+			public void call(ZoneOpenCommand t1) {
+				log.info("ZoneOpen: "+ t1.getZone() + " opened.");
+			}
+			
+		});
+	}
 	
 	public void disconnect() throws Exception {
 		instance.disconnect();
