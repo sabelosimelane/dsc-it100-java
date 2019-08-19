@@ -16,7 +16,7 @@ public class ExampleApp {
 		
 		// Configure for Envisalink (defaults)
 		final IT100 it100 = new IT100(new ConfigurationBuilder()
-				.withRemoteSocket("192.168.1.134", 4025)
+				.withRemoteSocket("envisalink", 4025)
 				.withStatusPolling(15)
 				.withEnvisalinkPassword("user").build());
 		
