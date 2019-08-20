@@ -2,7 +2,7 @@ package com.github.kmbulebu.dcs.rest.domain;
 
 public enum EventType {
 
-	ZONE_OPEN, ZONE_RESTORE, ZONE_ALARM, ZONE_ALARM_RESTORE;
+	ZONE_OPEN, ZONE_RESTORE, ZONE_ALARM, ZONE_ALARM_RESTORE, PARTITION_ARMED, PARTITION_DISARMED;
 	
 	public static EventType fromString(String eventType) {
 		
@@ -19,6 +19,12 @@ public enum EventType {
 				 
 			case "ZONE_ALARM_RESTORE":
 				 return ZONE_ALARM_RESTORE;
+				 
+			case "PARTITION_ARMED":
+				 return PARTITION_ARMED;
+				 
+			case "PARTITION_DISARMED":
+				 return PARTITION_DISARMED;
 		}
 		
 		return ZONE_OPEN;
