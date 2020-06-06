@@ -1,0 +1,50 @@
+Manifest-Version: 1.0
+Bnd-LastModified: 1591430596966
+Build-Jdk: 11.0.5
+Built-By: Sabside
+Bundle-Description: Enables communication with a DSC Security System via
+  the IT-100 serial integration module.
+Bundle-License: http://www.apache.org/licenses/LICENSE-2.0.txt
+Bundle-ManifestVersion: 2
+Bundle-Name: DSC IT-100 Serial Module API Library
+Bundle-SymbolicName: com.github.kmbulebu.dsc.it100-library
+Bundle-Version: 0.7.0
+Created-By: Apache Maven Bundle Plugin
+Export-Package: com.github.kmbulebu.dsc.it100;version="0.7.0";uses:="com
+ .github.kmbulebu.dcs.rest.domain,com.github.kmbulebu.dsc.it100.commands
+ .read,com.github.kmbulebu.dsc.it100.commands.write,javax.enterprise.con
+ text,org.apache.mina.core.service,rx,rx.subjects",com.github.kmbulebu.d
+ sc.it100.commands;version="0.7.0",com.github.kmbulebu.dsc.it100.command
+ s.read;version="0.7.0";uses:="com.github.kmbulebu.dsc.it100.commands",c
+ om.github.kmbulebu.dsc.it100.commands.util;version="0.7.0";uses:="com.g
+ ithub.kmbulebu.dsc.it100.commands.read",com.github.kmbulebu.dsc.it100.c
+ ommands.write;version="0.7.0";uses:="com.github.kmbulebu.dsc.it100.comm
+ ands,com.github.kmbulebu.dsc.it100.commands.util",com.github.kmbulebu.d
+ sc.it100.mina.codec;version="0.7.0";uses:="org.apache.mina.core.session
+ ,org.apache.mina.filter.codec,org.apache.mina.filter.codec.textline",co
+ m.github.kmbulebu.dsc.it100.mina.filters;version="0.7.0";uses:="org.apa
+ che.logging.log4j,org.apache.mina.core.filterchain,org.apache.mina.core
+ .session,org.apache.mina.core.write,org.apache.mina.filter.keepalive",c
+ om.github.kmbulebu.dsc.it100.mina.handlers;version="0.7.0";uses:="com.g
+ ithub.kmbulebu.dsc.it100.commands.read,org.apache.mina.core.session,org
+ .apache.mina.handler.demux,rx"
+Import-Package: com.concept.utils,com.github.kmbulebu.dcs.rest.domain,co
+ m.github.kmbulebu.dsc.it100.commands;version="[0.7,1)",com.github.kmbul
+ ebu.dsc.it100.commands.read;version="[0.7,1)",com.github.kmbulebu.dsc.i
+ t100.commands.util;version="[0.7,1)",com.github.kmbulebu.dsc.it100.comm
+ ands.write;version="[0.7,1)",com.github.kmbulebu.dsc.it100.mina.codec;v
+ ersion="[0.7,1)",com.github.kmbulebu.dsc.it100.mina.filters;version="[0
+ .7,1)",com.github.kmbulebu.dsc.it100.mina.handlers;version="[0.7,1)",ja
+ vax.enterprise.context,org.apache.commons.logging;version="[1.2,2)",org
+ .apache.logging.log4j;version="[2.11,3)",org.apache.mina.core.filtercha
+ in;version="[2.0,3)",org.apache.mina.core.future;version="[2.0,3)",org.
+ apache.mina.core.service;version="[2.0,3)",org.apache.mina.core.session
+ ;version="[2.0,3)",org.apache.mina.core.write;version="[2.0,3)",org.apa
+ che.mina.filter.codec;version="[2.0,3)",org.apache.mina.filter.codec.te
+ xtline;version="[2.0,3)",org.apache.mina.filter.keepalive;version="[2.0
+ ,3)",org.apache.mina.handler.demux;version="[2.0,3)",org.apache.mina.tr
+ ansport.serial;version="[2.0,3)",org.apache.mina.transport.socket.nio;v
+ ersion="[2.0,3)",rx;version="[0.20,1)",rx.functions;version="[0.20,1)",
+ rx.observables;version="[0.20,1)",rx.subjects;version="[0.20,1)"
+Require-Capability: osgi.ee;filter:="(&(osgi.ee=JavaSE)(version=1.8))"
+Tool: Bnd-4.1.0.201810181252

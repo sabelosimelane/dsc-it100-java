@@ -4,7 +4,7 @@
 
 	<groupId>com.github.kmbulebu.dsc</groupId>
 	<artifactId>dsc-it100-library</artifactId>
-	<version>0.7-SNAPSHOT</version>
+	<version>0.7</version>
 	<packaging>bundle</packaging>
 
 	<name>DSC IT-100 Serial Module API Library</name>
@@ -29,29 +29,20 @@
 		</developer>
 	</developers>
 
-	<scm>
-		<connection>scm:git:https://github.com/kmbulebu/dsc-it100-java.git</connection>
-		<developerConnection>scm:git:ssh://git@github.com/kmbulebu/dsc-it100-java.git</developerConnection>
-		<url>https://github.com/kmbulebu/dsc-it100-java</url>
-		<tag>HEAD</tag>
-	</scm>
-
 	<distributionManagement>
-		<snapshotRepository>
-			<id>ossrh</id>
-			<url>https://oss.sonatype.org/content/repositories/snapshots</url>
-		</snapshotRepository>
-		<repository>
-			<id>ossrh</id>
-			<url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
-		</repository>
-	</distributionManagement>
+    <repository>
+        <id>central</id>
+        <name>0b393742e83d-releases</name>
+        <url>https://artifactory.sabside.com/artifactory/libs-release-local</url>
+    </repository>
+  </distributionManagement>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<mina.version>2.0.20</mina.version>
 		<log4j.version>2.11.2</log4j.version>
 		<resteasy.version>3.8.1.Final</resteasy.version>
+		<version.server.bom>12.0.0.Final</version.server.bom>
 	</properties>
 
 	<dependencyManagement>
@@ -100,19 +91,20 @@
 				<version>4.12</version>
 				<scope>test</scope>
 			</dependency>
+			<dependency>
+                <groupId>org.wildfly.bom</groupId>
+                <artifactId>wildfly-javaee7-with-tools</artifactId>
+                <version>${version.server.bom}</version>
+                <type>pom</type>
+                <scope>import</scope>
+        </dependency> 
 		</dependencies>
 	</dependencyManagement>
 	<dependencies>
 		<dependency>
-	        <groupId>org.jboss.resteasy</groupId>
-	        <artifactId>resteasy-jaxrs</artifactId>
-	        <version>${resteasy.version}</version>
-	    </dependency>
-	    <dependency>
-		    <groupId>javax</groupId>
-		    <artifactId>javaee-api</artifactId>
-		    <version>8.0</version>
-		    <scope>provided</scope>
+			<groupId>concept</groupId>
+			<artifactId>concept.utils</artifactId>
+			<version>1.2.4</version>
 		</dependency>
 		<dependency>
 			<groupId>com.netflix.rxjava</groupId>
@@ -164,9 +156,27 @@
 			<artifactId>junit</artifactId>
 			<scope>test</scope>
 		</dependency>
+		
+		<dependency>
+            <groupId>org.jboss.resteasy</groupId>
+            <artifactId>jaxrs-api</artifactId>
+            <version>3.0.12.Final</version>
+        </dependency>
+        <dependency>
+		    <groupId>javax</groupId>
+		    <artifactId>javaee-api</artifactId>
+		    <version>8.0</version>
+		    <scope>provided</scope>
+		</dependency>
+		
 	</dependencies>
 
 	<build>
+		<sourceDirectory>src/main/java</sourceDirectory>
+		<testSourceDirectory>src/test/java</testSourceDirectory>
+		<testOutputDirectory>target/test</testOutputDirectory>
+		<outputDirectory>src/main/webapp/WEB-INF/classes</outputDirectory>
+	
 		<finalName>${project.artifactId}</finalName>
 		<pluginManagement>
 			<plugins>
@@ -174,8 +184,8 @@
 					<artifactId>maven-compiler-plugin</artifactId>
 					<version>3.8.0</version>
 					<configuration>
-						<source>11</source>
-						<target>11</target>
+						<source>8</source>
+						<target>8</target>
 					</configuration>
 				</plugin>
 				<plugin>
@@ -192,20 +202,34 @@
 						</instructions>
 					</configuration>
 				</plugin>
+				
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-dependency-plugin</artifactId>
+					<executions>
+						<execution>
+							<id>copy-dependencies</id>
+							<phase>prepare-package</phase>
+							<goals>
+								<goal>copy-dependencies</goal>
+							</goals>
+							<configuration>
+								<outputDirectory>${project.basedir}/src/main/webapp/WEB-INF/lib</outputDirectory>
+								<includeScope>runtime</includeScope>
+							</configuration>
+						</execution>
+					</executions>
+				</plugin>
+				
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-release-plugin</artifactId>
 					<version>2.5.3</version>
-					<configuration>
-						<arguments>-Dgpg.passphrase='${gpg.passphrase}'</arguments>
-						<tagNameFormat>@{project.version}</tagNameFormat>
-						<autoVersionSubmodules>true</autoVersionSubmodules>
-						<goals>deploy</goals>
-					</configuration>
 				</plugin>
 			</plugins>
 		</pluginManagement>
 		<plugins>
+			
 			<plugin>
 				<groupId>org.apache.felix</groupId>
 				<artifactId>maven-bundle-plugin</artifactId>
@@ -219,18 +243,6 @@
 						<id>source-jar</id>
 						<goals>
 							<goal>jar-no-fork</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
-			<plugin>
-				<artifactId>maven-javadoc-plugin</artifactId>
-				<version>3.1.0</version>
-				<executions>
-					<execution>
-						<id>javadoc-jar</id>
-						<goals>
-							<goal>jar</goal>
 						</goals>
 					</execution>
 				</executions>

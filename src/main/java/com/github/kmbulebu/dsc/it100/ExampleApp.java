@@ -1,5 +1,9 @@
 package com.github.kmbulebu.dsc.it100;
 
+import java.text.ParseException;
+import java.util.Date;
+
+import com.concept.utils.DateTimeUtil;
 import com.github.kmbulebu.dsc.it100.commands.read.ReadCommand;
 import com.github.kmbulebu.dsc.it100.commands.read.ZoneAlarmCommand;
 import com.github.kmbulebu.dsc.it100.commands.read.ZoneAlarmRestoreCommand;
@@ -55,7 +59,12 @@ public class ExampleApp {
 				@Override
 				public void call(ZoneOpenCommand t1) {
 					// Print time and name of zone that opened.
-					System.out.println("ZoneOpen: "+System.currentTimeMillis() + " " + t1.getZone() + " opened.");
+					try {
+						System.out.println("ZoneOpen: "+DateTimeUtil.toString(new Date(), DateTimeUtil.yyyy_MM_dd_HH_mm_ss_SSS) + " " + t1.getZone() + " opened.");
+					} catch (ParseException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 				}
 				
 			});
@@ -65,7 +74,12 @@ public class ExampleApp {
 
 				@Override
 				public void call(ZoneRestoredCommand t1) {
-					System.out.println("ZoneOpen: "+System.currentTimeMillis() + " " + t1.getZone() + " closed.");
+					try {
+						System.out.println("ZoneOpen: "+DateTimeUtil.toString(new Date(), DateTimeUtil.yyyy_MM_dd_HH_mm_ss_SSS) + " " + t1.getZone() + " closed.");
+					} catch (ParseException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 				}
 				
 			});
@@ -74,7 +88,12 @@ public class ExampleApp {
 
 				@Override
 				public void call(ZoneAlarmCommand t1) {
-					System.out.println("ZoneAlarm: "+System.currentTimeMillis() + " " + t1.getZone() + " closed.");
+					try {
+						System.out.println("ZoneAlarm: "+DateTimeUtil.toString(new Date(), DateTimeUtil.yyyy_MM_dd_HH_mm_ss_SSS) + " " + t1.getZone() + " closed.");
+					} catch (ParseException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 				}
 				
 			});
@@ -83,7 +102,13 @@ public class ExampleApp {
 
 				@Override
 				public void call(ZoneAlarmRestoreCommand t1) {
-					System.out.println("ZoneAlarm: "+System.currentTimeMillis() + " " + t1.getZone() + " closed.");
+					try {
+						System.out.println("ZoneAlarm: "+DateTimeUtil.toString(new Date(), DateTimeUtil.yyyy_MM_dd_HH_mm_ss_SSS) + " " + t1.getZone() +" - "+labels.getZoneLabel(t1.getZone()) + " closed.");
+						
+					} catch (ParseException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 				}
 				
 			});
