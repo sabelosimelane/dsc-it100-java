@@ -4,7 +4,7 @@
 
 	<groupId>com.github.kmbulebu.dsc</groupId>
 	<artifactId>dsc-it100-library</artifactId>
-	<version>0.7</version>
+	<version>0.9</version>
 	<packaging>bundle</packaging>
 
 	<name>DSC IT-100 Serial Module API Library</name>
@@ -102,9 +102,9 @@
 	</dependencyManagement>
 	<dependencies>
 		<dependency>
-			<groupId>concept</groupId>
-			<artifactId>concept.utils</artifactId>
-			<version>1.2.4</version>
+		    <groupId>concept-utils</groupId>
+		    <artifactId>concept-utils</artifactId>
+		    <version>1.2.1</version>
 		</dependency>
 		<dependency>
 			<groupId>com.netflix.rxjava</groupId>
